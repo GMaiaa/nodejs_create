@@ -6,9 +6,18 @@ const Agendamentos = db.sequelize.define("agendamentos", {
     },
     telefone:{
         type: db.Sequelize.INTEGER
+    },
+    origem:{
+        type: db.Sequelize.STRING
+    },
+    data_contato:{
+        type: db.Sequelize.DATE
+    },
+    observacao:{
+        type: db.Sequelize.TEXT
     }
 })
 
-//Agendamentos.sync({force: true})
+Agendamentos.sync({force: true})
 
 module.exports = Agendamentos

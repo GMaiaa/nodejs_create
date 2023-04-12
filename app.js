@@ -14,9 +14,22 @@ app.get("/", function(req, res){
     res.render("primeira_pagina")
 })
 
+app.get("/consulta", function(req, res){
+    post.findAll().then(function(post){
+        console.log({findClients: post})
+        res.render("consulta", {post})
+    }).catch(function(erro){
+        console.log("Erro ao carregar dados do banco: "+ erro)
+    })
+})
+
 app.post("/cadastrar", function(req, res){
     post.create({
-        nome: req.body.nome
+        nome: req.body.nome,
+        telefone: req.body.telefone,
+        origem: req.body.origem,
+        data_contato: req.body.data_contato,
+        observacao: req.body.observacao
     }).then(function(){
         res.send("Dados enviados com sucesso!")
     }).catch(function(erro){
